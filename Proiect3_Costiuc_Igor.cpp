@@ -28,6 +28,7 @@ int main()
     int ncaut;
     int temp[NMAX] = { 8, -1, -20, 30, 4, 5, 3, 11, 6, 9 }; 
     int val, val2;
+
     //Citire(n, note);
     cout << "Tabloul de temperaturi ocupa: " << sizeof(temp) << " Bt" << endl;
     do
@@ -47,7 +48,7 @@ int main()
         cout << "\n\n\t Alegeti de la 0 la 8 -> ";
         cin >> key;
         switch(key)
-        {
+        {    
             case 1:
                 Afisare(n, temp, "initial");
                 cout << "\nCea mai mica temperatura este: " << Minimum(n, temp);
@@ -92,7 +93,13 @@ int main()
     return 0;
 }
 int Citire(int n, int a[])
-{
+{// add case 1
+    cout << "Introduceti sirul de temperaturi: ";
+    cin>>n;
+    int arr[n];
+    cout << "Introduceti temperaturile" << n;
+   // for(i=0; i<n; i++)
+             //cin>>arr[i]; 
    return 1;
 }
 void Afisare(int n, int a[], char s[])
