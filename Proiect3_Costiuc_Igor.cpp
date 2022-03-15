@@ -6,14 +6,22 @@
 #define NMAX 100
 using namespace std;
 // Interfata programului
-int Citire(int n, int a[]); // La intrare: n - numarul de elemente; La iesire: a - tabloul de temp e; Functia intoarce: 1 - OK; 0 - Eroare
-void Afisare(int n, int a[], char s[]); // La intrare: n - numarul de elemente, a - tabloul de note;
-int Minimum(int n, int a[]);  // La intrare: n - numarul de elemente, a - tabloul de note; La iesire: valoare minima
-int Maximum(int n, int a[]);  // La intrare: n - numarul de elemente, a - tabloul de note; La iesire: valoare maxima
-float Media(int n, int a[]); // La intrare: n - numarul de elemente, a - tabloul de note; La iesire: nota medie
-int Sortare(int n, int a[]); // La intrare: n - numarul de elemente, a - tabloul de note; La iesire: a - tabloul aranjat; Functia intoarce: 1 - OK; 0 - Eroare
-int Rotire(int n, int a[]); // La intrare: n - numarul de elemente, a - tabloul de note; La iesire: a - tabloul rotit; Functia intoarce: 1 - OK; 0 - Eroare
-int Adaugare(int &n, int a[], int val); // La intrare: n - numarul de elemente, a - tabloul de note, val - elementu adaugat; La iesire: n - mareste cu 1, a - tablou
+int Citire(int n, int a[]);
+ // La intrare: n - numarul de elemente; La iesire: a - tabloul de temp e; Functia intoarce: 1 - OK; 0 - Eroare
+void Afisare(int n, int a[], char s[]);
+ // La intrare: n - numarul de elemente, a - tabloul de temperaturi;
+int Minimum(int n, int a[]);
+  // La intrare: n - numarul de elemente, a - tabloul de temperaturi; La iesire: valoare minima
+int Maximum(int n, int a[]);
+  // La intrare: n - numarul de elemente, a - tabloul de temperaturi; La iesire: valoare maxima
+float Media(int n, int a[]);
+ // La intrare: n - numarul de elemente, a - tabloul de temperaturi; La iesire: nota medie
+int Sortare(int n, int a[]);
+ // La intrare: n - numarul de elemente, a - tabloul de temperaturi; La iesire: a - tabloul aranjat; Functia intoarce: 1 - OK; 0 - Eroare
+int Rotire(int n, int a[]);
+ // La intrare: n - numarul de elemente, a - tabloul de temperaturi; La iesire: a - tabloul rotit; Functia intoarce: 1 - OK; 0 - Eroare
+int Adaugare(int &n, int a[], int val);
+ // La intrare: n - numarul de elemente, a - tabloul de temperaturi, val - elementu adaugat; La iesire: n - mareste cu 1, a - tablou
 int Adaugare(int &n, int a[], int val, char);
 int Adaugare(int &n, int a[], int val, int p);
 int Adaugare(int &n, int a[], int val, int p, char);
@@ -24,10 +32,14 @@ int Generare(int n, int a[]); // La intrare: n - numarul de elemente; La iesire:
 int main()
 {
     int key;
-    int n = 10;
+    int n = 50, poz = 5, m = 4;
     int ncaut;
     int temp[NMAX] = { 8, -1, -20, 30, 4, 5, 3, 11, 6, 9 }; 
     int val, val2;
+    char temp[][20] = {"|"}
+    int categorii[] = {0, 0, 0, 0};
+    cout << "Cate temperaturi?"; cin >> n;
+    Citire(n, temp);
 
     //Citire(n, note);
     cout << "Tabloul de temperaturi ocupa: " << sizeof(temp) << " Bt" << endl;
@@ -93,14 +105,32 @@ int main()
     return 0;
 }
 int Citire(int n, int a[])
-{// add case 1
-    cout << "Introduceti sirul de temperaturi: ";
-    cin>>n;
-    int arr[n];
-    cout << "Introduceti temperaturile" << n;
-   // for(i=0; i<n; i++)
-             //cin>>arr[i]; 
-   return 1;
+{
+     int key;
+    int i;
+    cout << "\n 1. De la tastatura";
+    cout << "\n 2. De generat aleator";
+    cout << "\n 3. De generat intr-un mod special";
+    cout << "\n 4. Din fisier";
+    cout << "\n 5. Implicit";
+    cout << "\n\n\t Alege -> "; cin >> key;
+    switch(key) {
+        case 1:
+            for(i=0; i<n; i++) {
+                    cout << "Temperatura " << i+1 << ": ";
+                    cin >> a[i];
+            }
+        break;
+        case 2:
+            for(i=0; i<n; i++)
+                    a[i] = rand() % 7 + 4;
+        break;
+        case 3:
+            for(i=0; i<n; i++)
+                    a[i] = i % 7 + 4;
+        break;
+    }
+    return 1;
 }
 void Afisare(int n, int a[], char s[])
 {
@@ -156,12 +186,12 @@ int Rotire(int n, int a[])
 {
 
      int i, b[NMAX];
-    for ( i = 0; i < 3; i++ )
+    for ( i = 0; i < 6; i++ )
         b[i] = a[i];
-    for( i = 3; i < n; i++)
-        a[i-3]=a[i];
-    for ( i = n - 3; i < n ; i++)
-        a[i]=b[i- n + 3 ];
+    for( i = 6; i < n; i++)
+        a[i-6]=a[i];
+    for ( i = n - 6; i < n ; i++)
+        a[i]=b[i- n + 6 ];
     return 1;
 }
 
